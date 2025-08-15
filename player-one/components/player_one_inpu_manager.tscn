@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmpobskycvfho"]
+
+[ext_resource type="Script" uid="uid://dr16ura3fdy1" path="res://player-one/scripts/PlayerOneInputManager.gd" id="1_njhlr"]
+
+[node name="PlayerOneInpuManager" type="Node2D"]
+script = ExtResource("1_njhlr")
