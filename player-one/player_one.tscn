@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://cn8a5o7rkk4f0"]
+[gd_scene load_steps=4 format=3 uid="uid://cn8a5o7rkk4f0"]
 
-[ext_resource type="PackedScene" uid="uid://bmpobskycvfho" path="res://player-one/components/player_one_inpu_manager.tscn" id="1_6bxaj"]
+[ext_resource type="PackedScene" uid="uid://bmpobskycvfho" path="res://player-one/components/player_one_input_manager.tscn" id="1_6bxaj"]
+[ext_resource type="Script" uid="uid://bidpm30yfgpq5" path="res://player-one/scripts/PlayerOneController.gd" id="1_o23em"]
+[ext_resource type="Texture2D" uid="uid://crkfay3hxhemh" path="res://player-one/sprites/player_one.png" id="3_ucmyg"]
 
-[node name="PlayerOne" type="Node2D"]
+[node name="playerOneNode" type="Node2D"]
+script = ExtResource("1_o23em")
+base_speed = 48.0
 
-[node name="PlayerOneInpuManager" parent="." instance=ExtResource("1_6bxaj")]
+[node name="playerOneInputManagerNode" parent="." instance=ExtResource("1_6bxaj")]
 position = Vector2(513.726, 362.396)
+
+[node name="playerOneSprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_ucmyg")

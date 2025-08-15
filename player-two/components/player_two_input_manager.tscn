@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://oxj72s6dfrk"]
+
+[ext_resource type="Script" uid="uid://bw0iexfhwy2t3" path="res://player-two/scripts/PlayerTwoInputManager.gd" id="1_v2i7a"]
+
+[node name="PlayerTwoInputManager" type="Node2D"]
+script = ExtResource("1_v2i7a")

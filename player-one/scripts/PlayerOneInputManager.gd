@@ -13,6 +13,8 @@ signal pressing_next_weapon_notify(isPressing:bool)
 
 signal pressing_shooting_notify(isPressing:bool)
 
+
+
 func _ready() -> void:
 	pass
 
@@ -21,13 +23,13 @@ func _process(delta: float) -> void:
 	var right = Input.is_action_pressed("player_one_right")
 	var down = Input.is_action_pressed("player_one_down")
 	var left = Input.is_action_pressed("player_one_left")
-	var previus_weapon = Input.is_action_pressed("player_one_previus_weapon")
-	var next_weapon = Input.is_action_pressed("player_one_next_weapon")
+	var previus_weapon = Input.is_action_just_pressed("player_one_previus_weapon")
+	var next_weapon = Input.is_action_just_pressed("player_one_next_weapon")
 	var shooting = Input.is_action_pressed("player_one_shoot")
 	
 	pressing_up_notify.emit(up)
-	pressing_down_notify.emit(right)
-	pressing_right_notify.emit(down)
+	pressing_down_notify.emit(down)
+	pressing_right_notify.emit(right)
 	pressing_left_notify.emit(left)
 	
 	pressing_previus_weapon_notify.emit(previus_weapon)
