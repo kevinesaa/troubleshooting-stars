@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmwucj82lh6rr"
-path="res://.godot/imported/enemy.png-4a202816447bc6ff42ce1da8b4530bbe.ctex"
+uid="uid://brqlthgpiekfr"
+path="res://.godot/imported/cotufino.png-5913381fd2694d8f96d14748bd7cd6a6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/boss/sprites/enemy.png"
-dest_files=["res://.godot/imported/enemy.png-4a202816447bc6ff42ce1da8b4530bbe.ctex"]
+source_file="res://enemies/cotufino/sprites/cotufino.png"
+dest_files=["res://.godot/imported/cotufino.png-5913381fd2694d8f96d14748bd7cd6a6.ctex"]
 
 [params]
 
