@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://xfp7i3n7ps6o"]
+
+[ext_resource type="Script" uid="uid://o7ifog0ipg5r" path="res://players-unit/PlayersUnitController.gd" id="1_oqpyu"]
+[ext_resource type="PackedScene" uid="uid://cn8a5o7rkk4f0" path="res://player-one/player_one.tscn" id="2_4fl28"]
+[ext_resource type="PackedScene" uid="uid://c0t2o2c8tkici" path="res://player-two/player_two.tscn" id="3_2ch6o"]
+
+[node name="playerUnitsNode" type="Node2D"]
+script = ExtResource("1_oqpyu")
+
+[node name="playerOneNode" parent="." instance=ExtResource("2_4fl28")]
+
+[node name="PlayerTwoNode" parent="." instance=ExtResource("3_2ch6o")]
+initial_angle_orbit_position = 270.0
+base_angular_orbit_speed = 45.0
+orbit_radius = 48.0
+base_self_angular_speed = 60.0

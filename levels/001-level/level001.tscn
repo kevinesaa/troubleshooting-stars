@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvkugmoc0j57p"]
+
+[ext_resource type="Texture2D" uid="uid://dbgnk8yarxl3b" path="res://_placeholders/screen_guide.png" id="2_4abh1"]
+[ext_resource type="PackedScene" uid="uid://xfp7i3n7ps6o" path="res://players-unit/players_unit.tscn" id="3_ueoc5"]
+
+[node name="level001Node" type="Node2D"]
+
+[node name="ScreenGuide" type="Sprite2D" parent="."]
+position = Vector2(320, 180)
+texture = ExtResource("2_4abh1")
+
+[node name="playerUnitsNode" parent="." instance=ExtResource("3_ueoc5")]
+position = Vector2(320, 300)

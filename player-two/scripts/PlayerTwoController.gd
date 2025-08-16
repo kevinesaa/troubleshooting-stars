@@ -8,13 +8,14 @@ extends Node2D
 var initial_angle_orbit_position:float
 @export 
 var base_angular_orbit_speed:float
+@export
+var orbit_radius:float
 
 var input_orbit_position:float 
 var input_orbit_position_left:float
 var input_orbit_position_rigth:float
 
 var current_angle_orbit_position:float
-var orbit_radius:float
 var angular_vector_orbit_position:Vector2 = Vector2.ZERO
 var pivot_player_node:Node2D
 #endregion
