@@ -17,13 +17,13 @@ var orbit_radius:float
 var angular_vector_position:Vector2 = Vector2.ZERO
 var pivot_player_node:Node2D
 
-func on_press_left_listener(is_pressing:bool):
+func on_press_left_orbit_listener(is_pressing:bool):
 	if(is_pressing):
 		self.input_position_left = -1
 	else:
 		self.input_position_left = 0
 
-func on_press_right_listener(is_pressing:bool):
+func on_press_right_orbit_listener(is_pressing:bool):
 	if(is_pressing):
 		self.input_position_rigth = 1
 	else:
@@ -32,8 +32,8 @@ func on_press_right_listener(is_pressing:bool):
 
 func _ready() -> void:
 	self.current_angle_position = self.initial_angle_position
-	self.player_two_input_manager.pressing_right_notify.connect(on_press_right_listener)
-	self.player_two_input_manager.pressing_left_notify.connect(on_press_left_listener)
+	self.player_two_input_manager.pressing_orbit_right_notify.connect(on_press_right_orbit_listener)
+	self.player_two_input_manager.pressing_orbit_left_notify.connect(on_press_left_orbit_listener)
 		
 
 func _process(delta: float) -> void:

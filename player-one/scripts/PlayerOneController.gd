@@ -5,6 +5,7 @@ extends Node2D
 
 @onready var player_one_input_manager: PlayerOneInputManager = $playerOneInputManagerNode
 
+
 var input_position:Vector2 = Vector2.ZERO
 var input_position_up_left:Vector2 = Vector2.ZERO
 var input_position_down_rigth:Vector2 = Vector2.ZERO
