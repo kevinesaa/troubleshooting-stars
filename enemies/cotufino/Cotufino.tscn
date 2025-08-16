@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dm5237q4cyokn"]
 
-[ext_resource type="Script" uid="uid://konahibgtlq5" path="res://enemies/cotufino/cotufino.gd" id="1_ss2vt"]
+[ext_resource type="Script" uid="uid://konahibgtlq5" path="res://enemies/cotufino/scripts/cotufino.gd" id="1_ss2vt"]
 [ext_resource type="Texture2D" uid="uid://bb1yr10brb21c" path="res://enemies/cotufino/sprites/cotufino.png" id="1_ysr82"]
 
 [node name="Cotufino" type="Node2D"]

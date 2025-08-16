@@ -36,15 +36,11 @@ func on_press_right_listener(is_pressing:bool):
 	else:
 		self.input_position_down_rigth.x = 0
 
+func on_press_shoot_listener(is_pressing:bool):
+	if(is_pressing):
+		print("shooting stars")
 
-func _ready() -> void:
-	self.player_one_input_manager.pressing_up_notify.connect(on_press_up_listener)
-	self.player_one_input_manager.pressing_right_notify.connect(on_press_right_listener)
-	self.player_one_input_manager.pressing_down_notify.connect(on_press_donw_listener)
-	self.player_one_input_manager.pressing_left_notify.connect(on_press_left_listener)
-	
-	
-func _process(delta: float) -> void:
+func my_move(delta: float) -> void:
 	
 	self.input_position = self.input_position_down_rigth + self.input_position_up_left
 	self.input_position = self.input_position.normalized() 
@@ -52,8 +48,13 @@ func _process(delta: float) -> void:
 	
 	self.position = self.position + self.velocity
 	
+
+func _ready() -> void:
+	self.player_one_input_manager.pressing_up_notify.connect(on_press_up_listener)
+	self.player_one_input_manager.pressing_right_notify.connect(on_press_right_listener)
+	self.player_one_input_manager.pressing_down_notify.connect(on_press_donw_listener)
+	self.player_one_input_manager.pressing_left_notify.connect(on_press_left_listener)
+	self.player_one_input_manager.pressing_shooting_notify.connect(on_press_shoot_listener  )
 	
-	
-	
-	
-	
+func _process(delta: float) -> void:
+	my_move(delta)

@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctfs7nfwtciy3"]
+
+[ext_resource type="Script" uid="uid://bvxf8eo1gxxjq" path="res://levels/scripts/BulletCollectorHedge.gd" id="1_ra6ee"]
+
+[node name="BulletCollectorHedgeNode" type="Node2D"]
+script = ExtResource("1_ra6ee")
+hedge_factor = 1.0
+
+[node name="Line2D" type="Line2D" parent="."]
+default_color = Color(0.713726, 0.352941, 0.47451, 1)
+
+[node name="up_RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 10
+
+[node name="right_RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 10
+
+[node name="down_RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 10
+
+[node name="left_RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 10

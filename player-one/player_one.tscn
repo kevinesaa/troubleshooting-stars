@@ -14,4 +14,5 @@ position = Vector2(513.726, 362.396)
 script = ExtResource("3_f4mb0")
 
 [node name="playerOneSprite" type="Sprite2D" parent="."]
+texture_filter = 1
 texture = ExtResource("3_ucmyg")
