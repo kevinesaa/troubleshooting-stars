@@ -16,5 +16,6 @@ texture = ExtResource("3_pp2st")
 position = Vector2(320, 192)
 
 [node name="PlayerTwo" parent="." instance=ExtResource("2_pp2st")]
-initial_angle_position = 270.0
-base_angular_speed = 20.0
+initial_angle_orbit_position = 270.0
+base_angular_orbit_speed = 20.0
+base_self_angular_speed = 180.0
