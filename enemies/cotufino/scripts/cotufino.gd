@@ -11,6 +11,10 @@ extends Node2D
 #shoot n go var
 @export var is_moving = false
 
+# bullet patterns
+const ALE_BULLET = preload("res://bullet-systems/ale_bullets/AleBullet.tscn")
+var wait_shot = 80.0
+var attack_speed = 0.0
 func _ready():
 	shot_n_go()
 	pass
@@ -19,11 +23,23 @@ func _process(delta):
 	#move(x_speed,y_speed)
 	#sine_move(delta)
 	if is_moving:
-		move(x_speed,y_speed)
+		#move(x_speed,y_speed)
 		pass
 	if position.y > 400:
 		queue_free()
+	shoot()
 	pass
+
+func shoot():
+	attack_speed-=1.0
+	if attack_speed <=0.0:
+		attack_speed = wait_shot
+		for i in 9:
+			var bulletInstance = ALE_BULLET.instantiate()
+			bulletInstance.position = self.position
+			bulletInstance.angle_in_degrees = 22.5 * i
+			get_tree().root.add_child(bulletInstance)
+			
 
 func move(dir_x, dir_y):
 	position.x += dir_x
