@@ -13,6 +13,7 @@ func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
+	
 	var speed = base_speed * delta
 	
 	velocity = velocity + Vector2.UP * speed

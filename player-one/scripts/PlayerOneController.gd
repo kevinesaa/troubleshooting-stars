@@ -11,6 +11,8 @@ var input_position_up_left:Vector2 = Vector2.ZERO
 var input_position_down_rigth:Vector2 = Vector2.ZERO
 var velocity:Vector2 = Vector2.ZERO
 
+var current_weapon: WeaponController
+
 func on_press_up_listener(is_pressing:bool):
 	
 	if(is_pressing):
@@ -37,8 +39,8 @@ func on_press_right_listener(is_pressing:bool):
 		self.input_position_down_rigth.x = 0
 
 func on_press_shoot_listener(is_pressing:bool):
-	if(is_pressing):
-		print("shooting stars")
+	if(is_pressing and current_weapon != null):
+		current_weapon.shoot()
 
 func my_move(delta: float) -> void:
 	
@@ -58,3 +60,5 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	my_move(delta)
+	
+	

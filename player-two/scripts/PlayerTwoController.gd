@@ -29,6 +29,8 @@ var input_self_rotation_rigth:float
 
 #endregion
 
+var current_weapon: WeaponController
+
 func on_press_left_orbit_listener(is_pressing:bool):
 	if(is_pressing):
 		self.input_orbit_position_left = -1
