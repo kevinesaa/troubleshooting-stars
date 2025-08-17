@@ -10,6 +10,7 @@ extends Node2D
 @onready var down_ray_cast_2d: RayCast2D = $down_RayCast2D
 @onready var left_ray_cast_2d: RayCast2D = $left_RayCast2D
 
+var raycast_array : Array[RayCast2D]
 
 var center_screen:Vector2
 var distance:float = 0
@@ -27,24 +28,26 @@ func  resize_hedge():
 	center_screen = abs(size / 2)
 	var r = size.x * size.x + size.y * size.y
 	var d = max(distance, sqrt( r ) )
+	
 	if (distance != d):
-		distance = d + d * hedge_factor
+		distance =  d + d * hedge_factor
 		distance = ceil(distance)
 		
-	print(str(distance))	
+	
 
 func corner_position()->void:
 	up_ray_cast_2d.position = center_screen + distance * Vector2.UP
-	right_ray_cast_2d.position = center_screen  + distance * Vector2.RIGHT
-	down_ray_cast_2d.position = center_screen  + distance * Vector2.DOWN
-	left_ray_cast_2d.position = center_screen  + distance * Vector2.LEFT
+	right_ray_cast_2d.position = center_screen + distance * Vector2.RIGHT
+	down_ray_cast_2d.position = center_screen + distance * Vector2.DOWN
+	left_ray_cast_2d.position = center_screen + distance * Vector2.LEFT
 
 func draw_hedge() -> void:
-	up_ray_cast_2d.target_position = right_ray_cast_2d.position
-	right_ray_cast_2d.target_position = down_ray_cast_2d.position
-	down_ray_cast_2d.target_position = left_ray_cast_2d.position
-	left_ray_cast_2d.target_position = up_ray_cast_2d.position
+	up_ray_cast_2d.target_position =  right_ray_cast_2d.position - up_ray_cast_2d.position
+	right_ray_cast_2d.target_position = down_ray_cast_2d.position - right_ray_cast_2d.position
+	down_ray_cast_2d.target_position = left_ray_cast_2d.position - down_ray_cast_2d.position
+	left_ray_cast_2d.target_position = up_ray_cast_2d.position - left_ray_cast_2d.position
 	
+	line_2d.clear_points()
 	line_2d.add_point(up_ray_cast_2d.position)
 	line_2d.add_point(right_ray_cast_2d.position)
 	line_2d.add_point(down_ray_cast_2d.position)
@@ -52,10 +55,20 @@ func draw_hedge() -> void:
 	line_2d.add_point(up_ray_cast_2d.position)
 	
 func _ready() -> void:
+	raycast_array.append(up_ray_cast_2d)
+	raycast_array.append(right_ray_cast_2d)
+	raycast_array.append(down_ray_cast_2d)
+	raycast_array.append(left_ray_cast_2d)
 	resize_hedge()
 	corner_position()
 	draw_hedge()
-	#get_viewport().get_window().
+	get_viewport().size_changed.connect(on_resize_screen_listener)
 
 func _physics_process(delta: float) -> void:
-	pass
+	for ray in raycast_array:
+		if(ray.is_colliding()):
+			var collider = ray.get_collider()
+			if(collider is BulletController):
+				collider = collider as BulletController
+				collider.back_to_pool()
+			

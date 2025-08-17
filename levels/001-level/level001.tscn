@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvkugmoc0j57p"]
+[gd_scene load_steps=5 format=3 uid="uid://bvkugmoc0j57p"]
 
+[ext_resource type="PackedScene" uid="uid://ctfs7nfwtciy3" path="res://levels/entities/bullet_collector_hedge.tscn" id="1_pd86n"]
 [ext_resource type="Texture2D" uid="uid://dbgnk8yarxl3b" path="res://_placeholders/screen_guide.png" id="2_4abh1"]
-[ext_resource type="PackedScene" uid="uid://b0jk87p1janlg" path="res://bullet-systems/_normal-bullet/normal_bullet.tscn" id="3_pd86n"]
+[ext_resource type="PackedScene" uid="uid://dkt543j3f8k85" path="res://bullet-systems/_normal-bullet/normal_bullet.tscn" id="3_pd86n"]
 [ext_resource type="PackedScene" uid="uid://xfp7i3n7ps6o" path="res://players-unit/players_unit.tscn" id="3_ueoc5"]
 
 [node name="level001Node" type="Node2D"]
@@ -14,4 +15,7 @@ texture = ExtResource("2_4abh1")
 position = Vector2(320, 300)
 
 [node name="NormalBulletNode" parent="." instance=ExtResource("3_pd86n")]
-position = Vector2(320, 264)
+position = Vector2(360, 248)
+base_speed = 100.0
+
+[node name="BulletCollectorHedgeNode" parent="." instance=ExtResource("1_pd86n")]
