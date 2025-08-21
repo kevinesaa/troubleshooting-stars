@@ -15,9 +15,14 @@ func _init(class_resource:Resource, capacity:int=1000) -> void:
 		self.pooledObjects.append(container)
 
 
+func add_pool_to_scene(node:Node):
+	var current_parent = self.get_parent()
+	if(current_parent!=null):
+		current_parent.remove_child(self)
+	node.add_child(self)
 	
 func _ready() -> void:
-	pass #get_tree().root.add_child(self)
+	pass
 
 func build_poolable_instance() -> PoolableObjectContainer:
 	var object:Node = self.class_resource.instantiate()
@@ -53,4 +58,5 @@ func return_object_to_pool(poolable:PoolableObjectContainer):
 	parent.remove_child(object)
 	
 	pooledObjects.push_back(poolable)
+	
 	

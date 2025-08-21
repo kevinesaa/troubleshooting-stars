@@ -11,7 +11,7 @@ extends Node2D
 
 func _ready() -> void:
 	
-	print(str("player global positoin",player_one_node.global_position))
+	
 	
 	#region player one init
 	player_one_node.current_weapon = player_one_current_weapon
