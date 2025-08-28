@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dophol1o7nlyb"]
+
+[ext_resource type="Script" uid="uid://de0s10lp7cmwv" path="res://main-menu/scripts/MainMenuController.gd" id="1_y0saa"]
+
+[node name="MainMenuNode" type="Node2D"]
+script = ExtResource("1_y0saa")
+debug_loading = true
+
+[connection signal="progressing_loading_scene_completed" from="." to="." method="on_next_scene_ready_listener"]
+[connection signal="progressing_loading_scene_updated" from="." to="." method="debug_loading_print"]
