@@ -5,8 +5,15 @@ var pooledObjects:Array[PoolableObjectContainer]
 var min_capacity:int
 var class_resource:Resource
 
-func _init(class_resource:Resource, capacity:int=1000) -> void:
-	self.min_capacity = mini(100,capacity)
+var thread_for_massive_object_create:Thread
+var mutex_for_massive_object_create: Mutex
+
+func _exit_tree():
+	if(thread_for_massive_object_create != null && thread_for_massive_object_create.is_alive()):
+		thread_for_massive_object_create.wait_to_finish()
+
+func _init(class_resource:Resource, capacity:int=100) -> void:
+	self.min_capacity = maxi(100,capacity)
 	self.class_resource = class_resource
 	self.pooledObjects = []
 	
@@ -22,7 +29,7 @@ func add_pool_to_scene(node:Node):
 	node.add_child(self)
 	
 func _ready() -> void:
-	pass
+	mutex_for_massive_object_create = Mutex.new()
 
 func build_poolable_instance() -> PoolableObjectContainer:
 	var object:Node = self.class_resource.instantiate()
@@ -34,11 +41,13 @@ func build_poolable_instance() -> PoolableObjectContainer:
 func get_object_from_pool() -> Node:
 	
 	var container:PoolableObjectContainer
+	
 	if(pooledObjects.is_empty()):
 		container = build_poolable_instance()
+		create_instances_massive_to_pool()
 	else:
 		container = pooledObjects.pop_front()
-	
+		
 	var object = container.get_real_object()
 	object.set_process(true)
 	object.set_physics_process(true)
@@ -59,4 +68,35 @@ func return_object_to_pool(poolable:PoolableObjectContainer):
 	
 	pooledObjects.push_back(poolable)
 	
+	
+func create_instances_massive_to_pool():
+	
+	if(
+		thread_for_massive_object_create == null
+		|| (thread_for_massive_object_create.is_started() 
+			&& !thread_for_massive_object_create.is_alive()
+		)
+	):
+		if(thread_for_massive_object_create != null):
+			thread_for_massive_object_create.wait_to_finish()
+	
+		thread_for_massive_object_create = Thread.new()
+	
+	if(!thread_for_massive_object_create.is_started()):
+		thread_for_massive_object_create.start(create_instaces_async)
+	
+
+func create_instaces_async():
+	
+	var new_ojects:Array[PoolableObjectContainer] = []
+	
+	for i in(min_capacity):
+		var instance:PoolableObjectContainer = build_poolable_instance()
+		new_ojects.append(instance)
+	
+	mutex_for_massive_object_create.lock()
+
+	self.pooledObjects.append_array(new_ojects)
+	
+	mutex_for_massive_object_create.unlock()
 	

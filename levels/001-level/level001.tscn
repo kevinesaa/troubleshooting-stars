@@ -25,4 +25,5 @@ player_two_current_weapon = NodePath("../playerTwoNormalWeaponNode")
 [node name="BulletCollectorHedgeNode" parent="." instance=ExtResource("1_pd86n")]
 
 [node name="Cotufino" parent="." instance=ExtResource("5_joyn7")]
+process_mode = 4
 position = Vector2(237, 142)
