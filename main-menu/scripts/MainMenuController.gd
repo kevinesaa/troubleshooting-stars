@@ -92,7 +92,7 @@ func loading_status_update(delta:float) -> void:
 		var value = factor * delta * self.progress_steps_speed 
 		value_after_update = current + value
 	
-	self.progress_loading_scene = value_after_update
+	self.progress_loading_scene = clamp(value_after_update, 0.0, 1.0)
 	
 	
 
