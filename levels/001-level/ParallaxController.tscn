@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckq3gegpxu7xa"]
+
+[ext_resource type="Texture2D" uid="uid://boq2hiy0tj05x" path="res://_placeholders/background.png" id="1_0papd"]
+[ext_resource type="Texture2D" uid="uid://ucs4cv2qcyuk" path="res://_placeholders/foreground.png" id="2_7y334"]
+
+[node name="ParallaxController" type="Node2D"]
+
+[node name="Background" type="Parallax2D" parent="."]
+repeat_size = Vector2(0, 320)
+autoscroll = Vector2(0, 700)
+ignore_camera_scroll = true
+
+[node name="sea" type="Sprite2D" parent="Background"]
+position = Vector2(312, 179.5)
+scale = Vector2(1, 1.11563)
+texture = ExtResource("1_0papd")
+
+[node name="Foreground" type="Parallax2D" parent="."]
+repeat_size = Vector2(0, 380)
+autoscroll = Vector2(0, 90)
+repeat_times = 144
+ignore_camera_scroll = true
+
+[node name="cloud_left" type="Sprite2D" parent="Foreground"]
+position = Vector2(136, 265)
+texture = ExtResource("2_7y334")
+
+[node name="cloud_right" type="Sprite2D" parent="Foreground"]
+position = Vector2(488, 129)
+texture = ExtResource("2_7y334")
