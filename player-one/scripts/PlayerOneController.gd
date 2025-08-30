@@ -1,17 +1,30 @@
 class_name PlayerOneController
 extends Node2D
 
-@export var base_speed:float 
-
+#region inputs
 @onready var player_one_input_manager: PlayerOneInputManager = $playerOneInputManagerNode
 
-const BULLET_EMMITER_LAYER_TYPE:BulletController.BulletEmitter = BulletController.BulletEmitter.PLAYER
 var input_position:Vector2 = Vector2.ZERO
 var input_position_up_left:Vector2 = Vector2.ZERO
 var input_position_down_rigth:Vector2 = Vector2.ZERO
-var velocity:Vector2 = Vector2.ZERO
+#endregion
 
-var current_weapon: WeaponController
+#region movement
+@export var base_speed:float 
+var velocity:Vector2 = Vector2.ZERO
+#endregion
+
+#region health
+@export var default_health:float = 100
+@export var max_health:float = 100
+var current_health:float
+signal health_changed_notify(current:float)
+#endregion
+
+#region weapons
+const BULLET_EMMITER_LAYER_TYPE:BulletController.BulletEmitter = BulletController.BulletEmitter.PLAYER
+var current_weapon:WeaponController
+#endregion
 
 func on_press_up_listener(is_pressing:bool):
 	
@@ -42,6 +55,12 @@ func on_press_shoot_listener(is_pressing:bool):
 	if(is_pressing and current_weapon != null):
 		current_weapon.shoot()
 
+func set_health(health:float):
+	self.current_health = health
+
+func get_health() -> float:
+	return self.current_health
+	
 func get_bullet_emmiter_layer_type() -> BulletController.BulletEmitter:
 	return self.BULLET_EMMITER_LAYER_TYPE
 
@@ -54,7 +73,7 @@ func my_move(delta: float) -> void:
 	self.position = self.position + self.velocity
 	
 func on_collision_enter_listener(body: Node2D):
-	print("colisionando")
+	print("jugador 1: hay algo colisionando")
 
 func _ready() -> void:
 	self.player_one_input_manager.pressing_up_notify.connect(on_press_up_listener)
