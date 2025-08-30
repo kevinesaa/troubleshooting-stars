@@ -75,6 +75,10 @@ func orbit_positioning(delta_time:float) -> void:
 	angular_vector_orbit_position.y = self.orbit_radius * sin(deg_to_rad(self.current_angle_orbit_position))
 	self.position = self.pivot_player_node.position + angular_vector_orbit_position
 
+
+func on_collision_enter_listener(body: Node2D):
+	print("colisionando")
+
 func _ready() -> void:
 	self.current_angle_orbit_position = self.initial_angle_orbit_position
 	self.player_two_input_manager.pressing_orbit_right_notify.connect(on_press_right_orbit_listener)
