@@ -13,6 +13,3 @@ func on_press_shoot_listener(is_pressing:bool):
 
 func get_bullet_emmiter_layer_type() -> BulletController.BulletEmitter:
 	return self.BULLET_EMMITER_LAYER_TYPE
-
-
-	

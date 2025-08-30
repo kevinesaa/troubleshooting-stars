@@ -1,5 +1,5 @@
 class_name PlayerOneController
-extends Node2D
+extends PlayerBaseController
 
 #region inputs
 @onready var player_one_input_manager: PlayerOneInputManager = $playerOneInputManagerNode
@@ -12,6 +12,7 @@ var input_position_down_rigth:Vector2 = Vector2.ZERO
 #region movement
 @export var base_speed:float 
 var velocity:Vector2 = Vector2.ZERO
+signal player_one_moving(delta_position:Vector2)
 #endregion
 
 #region health
@@ -21,10 +22,7 @@ var current_health:float
 signal health_changed_notify(current:float)
 #endregion
 
-#region weapons
-const BULLET_EMMITER_LAYER_TYPE:BulletController.BulletEmitter = BulletController.BulletEmitter.PLAYER
-var current_weapon:WeaponController
-#endregion
+
 
 func on_press_up_listener(is_pressing:bool):
 	
@@ -51,26 +49,23 @@ func on_press_right_listener(is_pressing:bool):
 	else:
 		self.input_position_down_rigth.x = 0
 
-func on_press_shoot_listener(is_pressing:bool):
-	if(is_pressing and current_weapon != null):
-		current_weapon.shoot()
-
 func set_health(health:float):
 	self.current_health = health
 
 func get_health() -> float:
 	return self.current_health
 	
-func get_bullet_emmiter_layer_type() -> BulletController.BulletEmitter:
-	return self.BULLET_EMMITER_LAYER_TYPE
 
 func my_move(delta: float) -> void:
 	
 	self.input_position = self.input_position_down_rigth + self.input_position_up_left
 	self.input_position = self.input_position.normalized() 
 	self.velocity = (delta * base_speed) * self.input_position
-	
-	self.position = self.position + self.velocity
+	var next_positon:Vector2 = self.position + self.velocity
+	var delta_position:Vector2 = next_positon - self.position
+	if( !delta_position.is_zero_approx() ):
+		self.player_one_moving.emit(delta_position)
+	self.position = next_positon
 	
 func on_collision_enter_listener(body: Node2D):
 	print("jugador 1: hay algo colisionando")

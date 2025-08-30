@@ -24,6 +24,7 @@ func _ready() -> void:
 	player_two_current_weapon.weapon_owner = player_two_node
 	#endregion
 	
+	player_one_node.player_one_moving.connect(player_two_node.on_player_one_moving_listener)
 
 func _process(delta: float) -> void:
 	

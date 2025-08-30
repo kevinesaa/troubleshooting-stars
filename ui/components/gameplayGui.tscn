@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://bujr2pmjeavre"]
+
+[ext_resource type="Texture2D" uid="uid://dbgnk8yarxl3b" path="res://_placeholders/screen_guide.png" id="1_6dbe4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6dbe4"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="gameplay_gui_node" type="CanvasLayer"]
+
+[node name="borrar_guia" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+texture = ExtResource("1_6dbe4")
+
+[node name="player_one_gui" type="PanelContainer" parent="."]
+anchors_preset = -1
+anchor_right = 0.15
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_6dbe4")
+
+[node name="ProgressBar" type="ProgressBar" parent="player_one_gui"]
+layout_mode = 2
+max_value = 1.0
+indeterminate = true
+editor_preview_indeterminate = false
+
+[node name="player_two_gui" type="PanelContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.85
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_6dbe4")

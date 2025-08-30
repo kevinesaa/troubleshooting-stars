@@ -20,6 +20,7 @@ var input_orbit_position_rigth:float
 var current_angle_orbit_position:float
 var angular_vector_orbit_position:Vector2 = Vector2.ZERO
 var pivot_player_node:Node2D
+var player_one_delta_position:Vector2 = Vector2.ZERO
 #endregion
 
 #region self rotation properties
@@ -61,6 +62,9 @@ func get_bullet_emmiter_layer_type() -> BulletController.BulletEmitter:
 	return self.BULLET_EMMITER_LAYER_TYPE
 
 
+func on_player_one_moving_listener(delta_positon:Vector2):
+	self.player_one_delta_position = delta_positon
+
 func self_rotation(delta_time:float) -> void:
 	self.input_self_rotation = self.input_self_rotation_rigth + self.input_self_rotation_left
 	var angular_speed = self.input_self_rotation * base_self_angular_speed * delta_time
@@ -73,7 +77,11 @@ func orbit_positioning(delta_time:float) -> void:
 	self.current_angle_orbit_position = self.current_angle_orbit_position + angular_speed
 	angular_vector_orbit_position.x = self.orbit_radius * cos(deg_to_rad(self.current_angle_orbit_position))
 	angular_vector_orbit_position.y = self.orbit_radius * sin(deg_to_rad(self.current_angle_orbit_position))
-	self.position = self.pivot_player_node.position + angular_vector_orbit_position
+	
+	#angular_vector_orbit_position.x = angular_vector_orbit_position.x + ( sign(angular_vector_orbit_position.x) * abs(self.player_one_delta_position.x) )
+	#angular_vector_orbit_position.y = angular_vector_orbit_position.y + ( sign(angular_vector_orbit_position.y) * abs(self.player_one_delta_position.y) )
+	
+	self.position =  self.pivot_player_node.position + angular_vector_orbit_position
 
 
 func on_collision_enter_listener(body: Node2D):
@@ -91,4 +99,4 @@ func _physics_process(delta: float) -> void:
 	self_rotation(delta)
 	if (self.pivot_player_node != null):
 		orbit_positioning(delta)
-	
+		player_one_delta_position = Vector2.ZERO
