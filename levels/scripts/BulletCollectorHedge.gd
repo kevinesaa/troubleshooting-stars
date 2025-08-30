@@ -27,7 +27,7 @@ func  resize_hedge():
 	var size = viewport.size
 	center_screen = abs(size / 2)
 	var r = size.x * size.x + size.y * size.y
-	var d = max(distance, sqrt( r ) )
+	var d = ceil( max(distance, sqrt( r ) ) )
 	
 	if (distance != d):
 		distance =  d + d * hedge_factor
