@@ -2,7 +2,7 @@ class_name BulletController
 extends CharacterBody2D # implements PoolableObject
 
 
-# { "players": 1, "player_bullets": 2, "enemies": 3, "enemy_bullets": 4, "bullet_collector": 5, "": 32 }
+# { "players": 1, "player_bullets": 2, "enemies": 3, "enemy_bullets": 4, "bullet_collector": 5 }
 enum BulletEmitter {
 	PLAYER = 2,
 	ENEMY = 4

@@ -53,6 +53,8 @@ func my_move(delta: float) -> void:
 	
 	self.position = self.position + self.velocity
 	
+func on_collision_enter_listener(body: Node2D):
+	print("colisionando")
 
 func _ready() -> void:
 	self.player_one_input_manager.pressing_up_notify.connect(on_press_up_listener)
