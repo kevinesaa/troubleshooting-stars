@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvkugmoc0j57p"]
+[gd_scene load_steps=8 format=3 uid="uid://bvkugmoc0j57p"]
 
 [ext_resource type="PackedScene" uid="uid://dav1qdt85rno8" path="res://weapons/_normal-weapon/normalWeapon.tscn" id="1_joyn7"]
 [ext_resource type="PackedScene" uid="uid://ctfs7nfwtciy3" path="res://levels/entities/bullet_collector_hedge.tscn" id="1_pd86n"]
 [ext_resource type="Texture2D" uid="uid://dbgnk8yarxl3b" path="res://_placeholders/screen_guide.png" id="2_4abh1"]
-[ext_resource type="PackedScene" path="res://levels/001-level/ParallaxController.tscn" id="2_ei1sm"]
+[ext_resource type="PackedScene" uid="uid://ckq3gegpxu7xa" path="res://levels/001-level/ParallaxController.tscn" id="2_ei1sm"]
 [ext_resource type="PackedScene" uid="uid://xfp7i3n7ps6o" path="res://players-unit/players_unit.tscn" id="3_ueoc5"]
 [ext_resource type="PackedScene" uid="uid://dm5237q4cyokn" path="res://enemies/cotufino/Cotufino.tscn" id="5_joyn7"]
+[ext_resource type="PackedScene" uid="uid://dujg7t2c0sltb" path="res://spawners/Spawner.tscn" id="7_qoyi0"]
 
 [node name="level001Node" type="Node2D"]
 
@@ -31,3 +32,6 @@ player_two_current_weapon = NodePath("../playerTwoNormalWeaponNode")
 [node name="Cotufino" parent="." instance=ExtResource("5_joyn7")]
 process_mode = 4
 position = Vector2(237, 142)
+
+[node name="Spawner" parent="." instance=ExtResource("7_qoyi0")]
+position = Vector2(424, 47)
