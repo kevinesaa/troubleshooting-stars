@@ -87,7 +87,7 @@ func _ready() -> void:
 	self.player_two_input_manager.pressing_self_rotation_left_notify.connect(on_press_left_self_rotation_listener )
 	
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	self_rotation(delta)
 	if (self.pivot_player_node != null):
 		orbit_positioning(delta)

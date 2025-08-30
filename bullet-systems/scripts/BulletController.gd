@@ -1,5 +1,6 @@
 class_name BulletController
-extends CharacterBody2D # implements PoolableObject
+extends Area2D # implements PoolableObject
+
 
 
 # { "players": 1, "player_bullets": 2, "enemies": 3, "enemy_bullets": 4, "bullet_collector": 5 }
@@ -20,8 +21,8 @@ var poolContainer:PoolableObjectContainer
 func set_emitter(emitter:BulletEmitter) -> void:
 	self.bullet_emitter = emitter
 	for i in range(0, 32):
-		self.set_collision_layer_value( i + 1,false)
-	self.set_collision_layer_value(emitter,true)
+		set_collision_layer_value( i + 1,false)
+	set_collision_layer_value(emitter,true)
 	
 
 func get_emitter() -> BulletEmitter:
@@ -41,5 +42,5 @@ func _init() -> void:
 func _physics_process(delta: float) -> void:
 	
 	var speed = base_speed * delta
-	velocity = velocity + Vector2.UP * speed
-	move_and_slide()
+	position = position + Vector2.UP * speed
+	

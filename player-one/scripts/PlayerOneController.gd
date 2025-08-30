@@ -63,7 +63,7 @@ func _ready() -> void:
 	self.player_one_input_manager.pressing_left_notify.connect(on_press_left_listener)
 	self.player_one_input_manager.pressing_shooting_notify.connect(on_press_shoot_listener  )
 	
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	my_move(delta)
 	
 	
