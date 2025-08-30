@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dm5237q4cyokn"]
+[gd_scene load_steps=4 format=3 uid="uid://dm5237q4cyokn"]
 
 [ext_resource type="Script" uid="uid://konahibgtlq5" path="res://enemies/cotufino/scripts/cotufino.gd" id="1_ss2vt"]
 [ext_resource type="Texture2D" uid="uid://bb1yr10brb21c" path="res://enemies/cotufino/sprites/cotufino.png" id="1_ysr82"]
+[ext_resource type="PackedScene" uid="uid://dhi4gkqqvhuxr" path="res://weapons/enemy-weapons/AleWeapon.tscn" id="2_0mk3d"]
 
 [node name="Cotufino" type="Node2D"]
 script = ExtResource("1_ss2vt")
@@ -9,3 +10,5 @@ script = ExtResource("1_ss2vt")
 [node name="Cotufino" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_ysr82")
+
+[node name="AleWeapon" parent="." instance=ExtResource("2_0mk3d")]
