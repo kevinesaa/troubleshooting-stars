@@ -2,6 +2,9 @@ extends Node2D
 class_name Cotufino
 const BULLET_EMMITER_LAYER_TYPE:BulletController.BulletEmitter = BulletController.BulletEmitter.ENEMY
 var poolContainer:PoolableObjectContainer
+static var ale_bullet_pool:PoolingSystemBase
+
+@onready var ale_weapon = $AleWeapon
 
 @export var x_speed = 0
 @export var y_speed = 1
@@ -10,29 +13,13 @@ var poolContainer:PoolableObjectContainer
 @export var amplitude = 50
 @export var frequency = 3.0
 @export var time = 0.0
-
+@onready var current_weapon: AleWeapon 
+  
 #shoot n go var
 @export var is_moving = false
 
-# bullet patterns
-const ALE_BULLET = preload("res://bullet-systems/ale_bullets/AleBullet.tscn")
-var wait_shot = 80.0
-var attack_speed = 0.0
-
 func get_bullet_emmiter_layer_type() -> BulletController.BulletEmitter:
 	return self.BULLET_EMMITER_LAYER_TYPE
-
-
-func shoot():
-	attack_speed-=1.0
-	if attack_speed <=0.0:
-		attack_speed = wait_shot
-		for i in 9:
-			var bulletInstance = ALE_BULLET.instantiate()
-			bulletInstance.position = self.position
-			bulletInstance.angle_in_degrees = 22.5 * i
-			get_tree().root.add_child(bulletInstance)
-			
 
 func move(dir_x, dir_y):
 	position.x += dir_x
@@ -58,15 +45,17 @@ func back_to_pool():
 	if(self.poolContainer != null):
 		self.poolContainer.back_to_pool()
 
-func _ready():
-	shot_n_go()
+func _ready(): 
+	#shot_n_go()
+	ale_weapon.weapon_owner = self
+	pass
 
 func _process(delta):
-	#move(x_speed,y_speed)
+	move(x_speed,y_speed)
 	#sine_move(delta)
 	if is_moving:
 		#move(x_speed,y_speed)
 		pass
 	if position.y > 400:
 		queue_free()
-	shoot()
+	ale_weapon.shoot()

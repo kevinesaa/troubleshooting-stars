@@ -1,9 +1,10 @@
 extends Node2D
 
-@export var spawners: Array[Vector2] = []
+@onready var spawners: Array[Vector2] = []
 static var enemy_pool:PoolingSystemBase
 
 const COTUFINO = preload("res://enemies/cotufino/Cotufino.tscn")
+
 
 func _ready():
 	spawners = [
@@ -33,6 +34,7 @@ func init_enemy_pool():
 	var pool_parent_node = enemy_pool.get_parent()
 	if(pool_parent_node == null):
 		enemy_pool.call_deferred("add_pool_to_scene",get_tree().root)
+		
 
 func create_enemy():
 	var cotufino:Cotufino = enemy_pool.get_object_from_pool() as Cotufino
