@@ -20,8 +20,8 @@ var poolContainer:PoolableObjectContainer
 
 func set_emitter(emitter:BulletEmitter) -> void:
 	self.bullet_emitter = emitter
-	for i in range(0, 32):
-		set_collision_layer_value( i + 1,false)
+	for i in (BulletEmitter.values()):
+		set_collision_layer_value( i, false)
 	set_collision_layer_value(emitter,true)
 	
 
@@ -35,9 +35,10 @@ func back_to_pool():
 	if(self.poolContainer != null):
 		self.poolContainer.back_to_pool()
 	
-func _init() -> void:
-	pass
 
+func _ready() -> void:
+	for i in range(0, 32):
+		set_collision_layer_value( i + 1,false)
 
 func _physics_process(delta: float) -> void:
 	
