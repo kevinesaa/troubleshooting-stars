@@ -5,7 +5,7 @@ extends Node2D
 
 @onready var player_one_input_manager: PlayerOneInputManager = $playerOneInputManagerNode
 
-
+const BULLET_EMMITER_LAYER_TYPE:BulletController.BulletEmitter = BulletController.BulletEmitter.PLAYER
 var input_position:Vector2 = Vector2.ZERO
 var input_position_up_left:Vector2 = Vector2.ZERO
 var input_position_down_rigth:Vector2 = Vector2.ZERO
@@ -41,6 +41,9 @@ func on_press_right_listener(is_pressing:bool):
 func on_press_shoot_listener(is_pressing:bool):
 	if(is_pressing and current_weapon != null):
 		current_weapon.shoot()
+
+func get_bullet_emmiter_layer_type() -> BulletController.BulletEmitter:
+	return self.BULLET_EMMITER_LAYER_TYPE
 
 func my_move(delta: float) -> void:
 	

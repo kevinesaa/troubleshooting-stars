@@ -1,5 +1,7 @@
 extends Node2D
 
+const BULLET_EMMITER_LAYER_TYPE:BulletController.BulletEmitter = BulletController.BulletEmitter.ENEMY
+
 @export var x_speed = 0
 @export var y_speed = 1
 
@@ -15,20 +17,10 @@ extends Node2D
 const ALE_BULLET = preload("res://bullet-systems/ale_bullets/AleBullet.tscn")
 var wait_shot = 80.0
 var attack_speed = 0.0
-func _ready():
-	shot_n_go()
-	pass
 
-func _process(delta):
-	#move(x_speed,y_speed)
-	#sine_move(delta)
-	if is_moving:
-		#move(x_speed,y_speed)
-		pass
-	if position.y > 400:
-		queue_free()
-	shoot()
-	pass
+func get_bullet_emmiter_layer_type() -> BulletController.BulletEmitter:
+	return self.BULLET_EMMITER_LAYER_TYPE
+
 
 func shoot():
 	attack_speed-=1.0
@@ -58,4 +50,16 @@ func shot_n_go():
 	await get_tree().create_timer(1.0).timeout
 	is_moving = true
 	
-	pass
+
+func _ready():
+	shot_n_go()
+
+func _process(delta):
+	#move(x_speed,y_speed)
+	#sine_move(delta)
+	if is_moving:
+		#move(x_speed,y_speed)
+		pass
+	if position.y > 400:
+		queue_free()
+	shoot()

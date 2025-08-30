@@ -27,7 +27,7 @@ func shoot() -> void:
 		var bulletInstance:BulletController = normal_bullet_pool.get_object_from_pool() as BulletController
 		bulletInstance.position = self.global_position
 		bulletInstance.base_speed = bullet_speed
-		
+		bulletInstance.set_emitter(weapon_owner.get_bullet_emmiter_layer_type())
 
 func _process(delta: float) -> void:
 	

@@ -13,6 +13,7 @@ var poolContainer:PoolableObjectContainer
 
 func set_emitter(emitter:BulletEmitter) -> void:
 	self.bullet_emitter = emitter
+	
 	#todo set collision layer
 
 func get_emitter() -> BulletEmitter:

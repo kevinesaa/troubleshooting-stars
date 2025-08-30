@@ -5,6 +5,7 @@ var pooledObjects:Array[PoolableObjectContainer]
 var min_capacity:int
 var class_resource:Resource
 
+#var current_task_id:int = -1
 var thread_for_massive_object_create:Thread
 var mutex_for_massive_object_create: Mutex
 
@@ -81,6 +82,7 @@ func create_instances_massive_to_pool():
 			thread_for_massive_object_create.wait_to_finish()
 	
 		thread_for_massive_object_create = Thread.new()
+		# WorkerThreadPool.
 	
 	if(!thread_for_massive_object_create.is_started()):
 		thread_for_massive_object_create.start(create_instaces_async)
