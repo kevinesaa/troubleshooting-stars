@@ -22,8 +22,8 @@ func _ready():
 		Vector2(320, -32) #12
 	]
 	init_enemy_pool()
-	create_enemy()
-	pass
+	
+	
 
 func get_spawner(position):
 	return spawners[position]
@@ -37,8 +37,16 @@ func init_enemy_pool():
 		
 
 func create_enemy():
+	print("crear enemigo")
 	var cotufino:Cotufino = enemy_pool.get_object_from_pool() as Cotufino
 	cotufino.position = self.global_position
 
+var t:float=1
+var b:bool=true
+
 func _process(delta: float):
-	pass
+	t=t-delta
+	if(t<=0 && b):
+		b = false
+		create_enemy()
+	

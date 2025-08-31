@@ -1,8 +1,11 @@
 extends Node2D
 class_name Cotufino
+
 const BULLET_EMMITER_LAYER_TYPE:BulletController.BulletEmitter = BulletController.BulletEmitter.ENEMY
+
 var poolContainer:PoolableObjectContainer
-static var ale_bullet_pool:PoolingSystemBase
+
+
 
 @onready var ale_weapon = $AleWeapon
 
@@ -57,5 +60,6 @@ func _process(delta):
 		#move(x_speed,y_speed)
 		pass
 	if position.y > 400:
-		queue_free()
+		back_to_pool()
 	ale_weapon.shoot()
+	

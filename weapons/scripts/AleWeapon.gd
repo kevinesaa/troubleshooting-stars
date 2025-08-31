@@ -35,8 +35,3 @@ func init_bullet_pool():
 
 func _ready() -> void:
 	init_bullet_pool()
-
-func _process(delta: float) -> void:
-	if(weapon_owner != null):
-		self.position =  weapon_owner.global_position
-		#shoot()
