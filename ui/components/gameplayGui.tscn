@@ -1,9 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bujr2pmjeavre"]
+[gd_scene load_steps=2 format=3 uid="uid://bujr2pmjeavre"]
 
 [ext_resource type="Texture2D" uid="uid://dbgnk8yarxl3b" path="res://_placeholders/screen_guide.png" id="1_6dbe4"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6dbe4"]
-bg_color = Color(0, 0, 0, 1)
 
 [node name="gameplay_gui_node" type="CanvasLayer"]
 
@@ -17,27 +14,36 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 texture = ExtResource("1_6dbe4")
 
-[node name="player_one_gui" type="PanelContainer" parent="."]
-anchors_preset = -1
-anchor_right = 0.15
-anchor_bottom = 1.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_6dbe4")
-
-[node name="ProgressBar" type="ProgressBar" parent="player_one_gui"]
-layout_mode = 2
-max_value = 1.0
-indeterminate = true
-editor_preview_indeterminate = false
-
-[node name="player_two_gui" type="PanelContainer" parent="."]
-anchors_preset = -1
-anchor_left = 0.85
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 0
+grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_6dbe4")
+
+[node name="left" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/left"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="center" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.7
+
+[node name="right" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.15
