@@ -1,11 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://bujr2pmjeavre"]
+[gd_scene load_steps=7 format=3 uid="uid://bujr2pmjeavre"]
 
 [ext_resource type="Texture2D" uid="uid://dbgnk8yarxl3b" path="res://_placeholders/screen_guide.png" id="1_6dbe4"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6dbe4"]
-bg_color = Color(0, 0, 0, 1)
+[ext_resource type="Texture2D" uid="uid://dgg178wbmyvm2" path="res://_placeholders/weapon_portrait.png" id="2_2d8pv"]
+[ext_resource type="Texture2D" uid="uid://dp1qu458bpxb" path="res://_placeholders/health_progress_background.png" id="2_2k2th"]
+[ext_resource type="Texture2D" uid="uid://bgejygctvfrcr" path="res://_placeholders/player_portrait.png" id="2_61atn"]
+[ext_resource type="Texture2D" uid="uid://c2crjjufspy1o" path="res://_placeholders/health_progress_midground.png" id="3_0gawn"]
+[ext_resource type="Texture2D" uid="uid://c1nv7g1rohpx1" path="res://_placeholders/health_progress_foreground.png" id="3_61atn"]
 
 [node name="gameplay_gui_node" type="CanvasLayer"]
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(96, 0)
 
 [node name="borrar_guia" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -17,27 +22,251 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 texture = ExtResource("1_6dbe4")
 
-[node name="player_one_gui" type="PanelContainer" parent="."]
-anchors_preset = -1
-anchor_right = 0.15
-anchor_bottom = 1.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_6dbe4")
-
-[node name="ProgressBar" type="ProgressBar" parent="player_one_gui"]
-layout_mode = 2
-max_value = 1.0
-indeterminate = true
-editor_preview_indeterminate = false
-
-[node name="player_two_gui" type="PanelContainer" parent="."]
-anchors_preset = -1
-anchor_left = 0.85
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_6dbe4")
+theme_override_constants/separation = 0
+
+[node name="player_one_ui" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.15
+
+[node name="background_player_one" type="ColorRect" parent="HBoxContainer/player_one_ui"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/player_one_ui"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/player_one_ui/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+
+[node name="player_one_weapons_container_VBoxContainer" type="VBoxContainer" parent="HBoxContainer/player_one_ui/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="current_weapon_player_one_VBoxContainer" type="VBoxContainer" parent="HBoxContainer/player_one_ui/HBoxContainer/VBoxContainer/player_one_weapons_container_VBoxContainer"]
+layout_mode = 2
+
+[node name="current_weapon_player_one" type="TextureRect" parent="HBoxContainer/player_one_ui/HBoxContainer/VBoxContainer/player_one_weapons_container_VBoxContainer/current_weapon_player_one_VBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("2_2d8pv")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HBoxContainer/player_one_ui/HBoxContainer/VBoxContainer/player_one_weapons_container_VBoxContainer/current_weapon_player_one_VBoxContainer"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+nine_patch_stretch = true
+texture_under = ExtResource("3_0gawn")
+texture_progress = ExtResource("3_61atn")
+
+[node name="reserve_weapons_container" type="HBoxContainer" parent="HBoxContainer/player_one_ui/HBoxContainer/VBoxContainer/player_one_weapons_container_VBoxContainer"]
+layout_mode = 2
+
+[node name="next_weapon_player_one_VBoxContainer" type="VBoxContainer" parent="HBoxContainer/player_one_ui/HBoxContainer/VBoxContainer/player_one_weapons_container_VBoxContainer/reserve_weapons_container"]
+layout_mode = 2
+
+[node name="next_weapon_player_one" type="TextureRect" parent="HBoxContainer/player_one_ui/HBoxContainer/VBoxContainer/player_one_weapons_container_VBoxContainer/reserve_weapons_container/next_weapon_player_one_VBoxContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("2_2d8pv")
+expand_mode = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HBoxContainer/player_one_ui/HBoxContainer/VBoxContainer/player_one_weapons_container_VBoxContainer/reserve_weapons_container/next_weapon_player_one_VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+nine_patch_stretch = true
+texture_under = ExtResource("3_0gawn")
+texture_progress = ExtResource("3_61atn")
+
+[node name="second_weapon_player_one_VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/player_one_ui/HBoxContainer/VBoxContainer/player_one_weapons_container_VBoxContainer/reserve_weapons_container"]
+layout_mode = 2
+
+[node name="next_weapon_player_one" type="TextureRect" parent="HBoxContainer/player_one_ui/HBoxContainer/VBoxContainer/player_one_weapons_container_VBoxContainer/reserve_weapons_container/second_weapon_player_one_VBoxContainer2"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("2_2d8pv")
+expand_mode = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HBoxContainer/player_one_ui/HBoxContainer/VBoxContainer/player_one_weapons_container_VBoxContainer/reserve_weapons_container/second_weapon_player_one_VBoxContainer2"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+nine_patch_stretch = true
+texture_under = ExtResource("3_0gawn")
+texture_progress = ExtResource("3_61atn")
+
+[node name="last_weapon_player_one_VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/player_one_ui/HBoxContainer/VBoxContainer/player_one_weapons_container_VBoxContainer/reserve_weapons_container"]
+layout_mode = 2
+
+[node name="last_weapon_player_one" type="TextureRect" parent="HBoxContainer/player_one_ui/HBoxContainer/VBoxContainer/player_one_weapons_container_VBoxContainer/reserve_weapons_container/last_weapon_player_one_VBoxContainer2"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("2_2d8pv")
+expand_mode = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HBoxContainer/player_one_ui/HBoxContainer/VBoxContainer/player_one_weapons_container_VBoxContainer/reserve_weapons_container/last_weapon_player_one_VBoxContainer2"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+nine_patch_stretch = true
+texture_under = ExtResource("3_0gawn")
+texture_progress = ExtResource("3_61atn")
+
+[node name="portrait_player_one_TextureRect" type="TextureRect" parent="HBoxContainer/player_one_ui/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("2_61atn")
+expand_mode = 1
+
+[node name="name_label_player_one" type="Label" parent="HBoxContainer/player_one_ui/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "player one"
+vertical_alignment = 2
+clip_text = true
+
+[node name="health_left_players" type="TextureProgressBar" parent="HBoxContainer/player_one_ui/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+value = 100.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = ExtResource("2_2k2th")
+texture_progress = ExtResource("3_61atn")
+
+[node name="center" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.7
+
+[node name="player_two_ui" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.15
+
+[node name="background_player_two" type="ColorRect" parent="HBoxContainer/player_two_ui"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/player_two_ui"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="health_rigth_players" type="TextureProgressBar" parent="HBoxContainer/player_two_ui/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+value = 100.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = ExtResource("2_2k2th")
+texture_progress = ExtResource("3_61atn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/player_two_ui/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+
+[node name="player_two_weapons_container_VBoxContainer" type="VBoxContainer" parent="HBoxContainer/player_two_ui/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="current_weapon_player_two_VBoxContainer" type="VBoxContainer" parent="HBoxContainer/player_two_ui/HBoxContainer/VBoxContainer/player_two_weapons_container_VBoxContainer"]
+layout_mode = 2
+
+[node name="current_weapon_player_one" type="TextureRect" parent="HBoxContainer/player_two_ui/HBoxContainer/VBoxContainer/player_two_weapons_container_VBoxContainer/current_weapon_player_two_VBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("2_2d8pv")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HBoxContainer/player_two_ui/HBoxContainer/VBoxContainer/player_two_weapons_container_VBoxContainer/current_weapon_player_two_VBoxContainer"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+nine_patch_stretch = true
+texture_under = ExtResource("3_0gawn")
+texture_progress = ExtResource("3_61atn")
+
+[node name="reserve_weapons_container" type="HBoxContainer" parent="HBoxContainer/player_two_ui/HBoxContainer/VBoxContainer/player_two_weapons_container_VBoxContainer"]
+layout_mode = 2
+
+[node name="next_weapon_player_one_VBoxContainer" type="VBoxContainer" parent="HBoxContainer/player_two_ui/HBoxContainer/VBoxContainer/player_two_weapons_container_VBoxContainer/reserve_weapons_container"]
+layout_mode = 2
+
+[node name="next_weapon_player_one" type="TextureRect" parent="HBoxContainer/player_two_ui/HBoxContainer/VBoxContainer/player_two_weapons_container_VBoxContainer/reserve_weapons_container/next_weapon_player_one_VBoxContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("2_2d8pv")
+expand_mode = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HBoxContainer/player_two_ui/HBoxContainer/VBoxContainer/player_two_weapons_container_VBoxContainer/reserve_weapons_container/next_weapon_player_one_VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+nine_patch_stretch = true
+texture_under = ExtResource("3_0gawn")
+texture_progress = ExtResource("3_61atn")
+
+[node name="second_weapon_player_one_VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/player_two_ui/HBoxContainer/VBoxContainer/player_two_weapons_container_VBoxContainer/reserve_weapons_container"]
+layout_mode = 2
+
+[node name="next_weapon_player_one" type="TextureRect" parent="HBoxContainer/player_two_ui/HBoxContainer/VBoxContainer/player_two_weapons_container_VBoxContainer/reserve_weapons_container/second_weapon_player_one_VBoxContainer2"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("2_2d8pv")
+expand_mode = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HBoxContainer/player_two_ui/HBoxContainer/VBoxContainer/player_two_weapons_container_VBoxContainer/reserve_weapons_container/second_weapon_player_one_VBoxContainer2"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+nine_patch_stretch = true
+texture_under = ExtResource("3_0gawn")
+texture_progress = ExtResource("3_61atn")
+
+[node name="last_weapon_player_one_VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/player_two_ui/HBoxContainer/VBoxContainer/player_two_weapons_container_VBoxContainer/reserve_weapons_container"]
+layout_mode = 2
+
+[node name="last_weapon_player_one" type="TextureRect" parent="HBoxContainer/player_two_ui/HBoxContainer/VBoxContainer/player_two_weapons_container_VBoxContainer/reserve_weapons_container/last_weapon_player_one_VBoxContainer2"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("2_2d8pv")
+expand_mode = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HBoxContainer/player_two_ui/HBoxContainer/VBoxContainer/player_two_weapons_container_VBoxContainer/reserve_weapons_container/last_weapon_player_one_VBoxContainer2"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+nine_patch_stretch = true
+texture_under = ExtResource("3_0gawn")
+texture_progress = ExtResource("3_61atn")
+
+[node name="portrait_player_two_TextureRect" type="TextureRect" parent="HBoxContainer/player_two_ui/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_61atn")
+
+[node name="name_label_player_two" type="Label" parent="HBoxContainer/player_two_ui/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "player two"
+vertical_alignment = 2
+clip_text = true
