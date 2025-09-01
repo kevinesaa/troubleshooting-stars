@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 class_name Cotufino
 
 const BULLET_EMMITER_LAYER_TYPE:BulletController.BulletEmitter = BulletController.BulletEmitter.ENEMY
@@ -41,6 +41,9 @@ func shot_n_go():
 	await get_tree().create_timer(1.0).timeout
 	is_moving = true
 
+func on_player_position_listener(player_position:Vector2)->void:
+	self.player_position = player_position
+
 func set_pool_container(poolContainer:PoolableObjectContainer):
 	self.poolContainer = poolContainer
 
@@ -48,8 +51,11 @@ func back_to_pool():
 	if(self.poolContainer != null):
 		self.poolContainer.back_to_pool()
 
-func on_player_position_listener(player_position:Vector2)->void:
-	self.player_position = player_position
+func on_collision_enter_listener(body: Node2D):
+	print("cotufino 1: hay algo colisionando")
+
+func on_area_enter_listener(body: Area2D):
+	print("cotufino 2: hay algo colisionando")
 
 func _ready(): 
 	#shot_n_go()
