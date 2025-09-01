@@ -21,4 +21,4 @@ texture = ExtResource("3_613pn")
 position = Vector2(-0.5, 0)
 shape = SubResource("CircleShape2D_613pn")
 
-[connection signal="body_entered" from="." to="." method="on_collision_enter_listener"]
+[connection signal="area_entered" from="." to="." method="on_area_enter_listener"]

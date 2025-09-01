@@ -70,6 +70,9 @@ func my_move(delta: float) -> void:
 func on_collision_enter_listener(body: Node2D):
 	print("jugador 1: hay algo colisionando")
 
+func on_area_enter_listener(body: Area2D):
+	print("jugador 1: hay algo colisionando")
+
 func _ready() -> void:
 	self.player_one_input_manager.pressing_up_notify.connect(on_press_up_listener)
 	self.player_one_input_manager.pressing_right_notify.connect(on_press_right_listener)

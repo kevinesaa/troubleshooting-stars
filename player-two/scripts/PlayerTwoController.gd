@@ -85,7 +85,10 @@ func orbit_positioning(delta_time:float) -> void:
 
 
 func on_collision_enter_listener(body: Node2D):
-	print("jugador 1: hay algo colisionando")
+	print("jugador 2: hay algo colisionando")
+
+func on_area_enter_listener(body: Area2D):
+	print("jugador 2: hay algo colisionando")
 
 func _ready() -> void:
 	self.current_angle_orbit_position = self.initial_angle_orbit_position

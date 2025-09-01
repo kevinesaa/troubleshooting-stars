@@ -23,3 +23,5 @@ texture = ExtResource("3_ucmyg")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ucmyg")
 debug_color = Color(0.980392, 0, 0.266667, 0.419608)
+
+[connection signal="area_entered" from="." to="." method="on_area_enter_listener"]
