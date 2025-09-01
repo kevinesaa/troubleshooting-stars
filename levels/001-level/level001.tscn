@@ -35,6 +35,6 @@ process_mode = 4
 position = Vector2(237, 142)
 
 [node name="Spawner" parent="." instance=ExtResource("7_qoyi0")]
-position = Vector2(201, 43)
+position = Vector2(378, 49)
 
 [node name="gameplay_gui_node" parent="." instance=ExtResource("8_ucxyy")]
