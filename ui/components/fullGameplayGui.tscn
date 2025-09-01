@@ -1,0 +1,96 @@
+[gd_scene load_steps=4 format=3 uid="uid://bujr2pmjeavre"]
+
+[ext_resource type="PackedScene" uid="uid://c6s5wg4lmq85t" path="res://ui/components/playerGameplayGui.tscn" id="2_q5lwq"]
+[ext_resource type="Texture2D" uid="uid://c1nv7g1rohpx1" path="res://_placeholders/health_progress_foreground.png" id="4_kp8g3"]
+[ext_resource type="Texture2D" uid="uid://dp1qu458bpxb" path="res://_placeholders/health_progress_background.png" id="6_i1gcs"]
+
+[node name="gameplay_gui_node" type="CanvasLayer"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="player_one_ui" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.15
+
+[node name="background_player_one" type="ColorRect" parent="HBoxContainer/player_one_ui"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/player_one_ui"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="player_one_ui_VBoxContainer" parent="HBoxContainer/player_one_ui/HBoxContainer" instance=ExtResource("2_q5lwq")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="health_left_players" type="TextureProgressBar" parent="HBoxContainer/player_one_ui/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+value = 100.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = ExtResource("6_i1gcs")
+texture_progress = ExtResource("4_kp8g3")
+
+[node name="center" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.7
+
+[node name="player_two_ui" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.15
+
+[node name="background_player_two" type="ColorRect" parent="HBoxContainer/player_two_ui"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/player_two_ui"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="health_rigth_players" type="TextureProgressBar" parent="HBoxContainer/player_two_ui/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+value = 100.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = ExtResource("6_i1gcs")
+texture_progress = ExtResource("4_kp8g3")
+
+[node name="player_one_ui_VBoxContainer" parent="HBoxContainer/player_two_ui/HBoxContainer" instance=ExtResource("2_q5lwq")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1

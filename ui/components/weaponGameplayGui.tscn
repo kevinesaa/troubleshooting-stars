@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://igyqtypcxn2b"]
+
+[ext_resource type="Texture2D" uid="uid://dgg178wbmyvm2" path="res://_placeholders/weapon_portrait.png" id="1_okanf"]
+[ext_resource type="Texture2D" uid="uid://c2crjjufspy1o" path="res://_placeholders/health_progress_midground.png" id="2_sg4qm"]
+[ext_resource type="Texture2D" uid="uid://c1nv7g1rohpx1" path="res://_placeholders/health_progress_foreground.png" id="3_qb1mj"]
+
+[node name="weapon_VBoxContainer" type="VBoxContainer"]
+offset_right = 24.0
+offset_bottom = 32.0
+
+[node name="weapon_portrait" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("1_okanf")
+expand_mode = 1
+
+[node name="warming_TextureProgressBar" type="TextureProgressBar" parent="."]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+nine_patch_stretch = true
+texture_under = ExtResource("2_sg4qm")
+texture_progress = ExtResource("3_qb1mj")

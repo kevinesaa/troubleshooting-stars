@@ -1,0 +1,102 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6s5wg4lmq85t"]
+
+[ext_resource type="Texture2D" uid="uid://dgg178wbmyvm2" path="res://_placeholders/weapon_portrait.png" id="2_eas85"]
+[ext_resource type="Texture2D" uid="uid://c2crjjufspy1o" path="res://_placeholders/health_progress_midground.png" id="3_0s6xr"]
+[ext_resource type="Texture2D" uid="uid://c1nv7g1rohpx1" path="res://_placeholders/health_progress_foreground.png" id="4_58sw7"]
+[ext_resource type="Texture2D" uid="uid://bgejygctvfrcr" path="res://_placeholders/player_portrait.png" id="5_5wwes"]
+
+[node name="player_ui_VBoxContainer" type="VBoxContainer"]
+offset_right = 80.0
+offset_bottom = 225.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="portrait_player_TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("5_5wwes")
+expand_mode = 1
+
+[node name="player_name_label" type="Label" parent="."]
+layout_mode = 2
+text = "player one"
+vertical_alignment = 2
+clip_text = true
+
+[node name="weapons_container_VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="current_weapon_VBoxContainer" type="VBoxContainer" parent="weapons_container_VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="current_weapon_player_one" type="TextureRect" parent="weapons_container_VBoxContainer/current_weapon_VBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("2_eas85")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="weapons_container_VBoxContainer/current_weapon_VBoxContainer"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+nine_patch_stretch = true
+texture_under = ExtResource("3_0s6xr")
+texture_progress = ExtResource("4_58sw7")
+
+[node name="reserve_weapons_container" type="HBoxContainer" parent="weapons_container_VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="next_weapon_VBoxContainer" type="VBoxContainer" parent="weapons_container_VBoxContainer/reserve_weapons_container"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 0
+
+[node name="next_weapon_player_one" type="TextureRect" parent="weapons_container_VBoxContainer/reserve_weapons_container/next_weapon_VBoxContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("2_eas85")
+expand_mode = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="weapons_container_VBoxContainer/reserve_weapons_container/next_weapon_VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+nine_patch_stretch = true
+texture_under = ExtResource("3_0s6xr")
+texture_progress = ExtResource("4_58sw7")
+
+[node name="second_weapon_VBoxContainer" type="VBoxContainer" parent="weapons_container_VBoxContainer/reserve_weapons_container"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 0
+
+[node name="next_weapon_player_one" type="TextureRect" parent="weapons_container_VBoxContainer/reserve_weapons_container/second_weapon_VBoxContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("2_eas85")
+expand_mode = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="weapons_container_VBoxContainer/reserve_weapons_container/second_weapon_VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+nine_patch_stretch = true
+texture_under = ExtResource("3_0s6xr")
+texture_progress = ExtResource("4_58sw7")
+
+[node name="last_weapon_VBoxContainer" type="VBoxContainer" parent="weapons_container_VBoxContainer/reserve_weapons_container"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 0
+
+[node name="last_weapon_player_one" type="TextureRect" parent="weapons_container_VBoxContainer/reserve_weapons_container/last_weapon_VBoxContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("2_eas85")
+expand_mode = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="weapons_container_VBoxContainer/reserve_weapons_container/last_weapon_VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+nine_patch_stretch = true
+texture_under = ExtResource("3_0s6xr")
+texture_progress = ExtResource("4_58sw7")
