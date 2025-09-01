@@ -4,7 +4,7 @@ extends Node2D
 static var enemy_pool:PoolingSystemBase
 
 const COTUFINO = preload("res://enemies/cotufino/Cotufino.tscn")
-
+@onready var player_container:PlayersUnitController = $"../playerUnitsNode"
 
 func _ready():
 	spawners = [
@@ -22,8 +22,6 @@ func _ready():
 		Vector2(320, -32) #12
 	]
 	init_enemy_pool()
-	
-	
 
 func get_spawner(position):
 	return spawners[position]
@@ -34,11 +32,11 @@ func init_enemy_pool():
 	var pool_parent_node = enemy_pool.get_parent()
 	if(pool_parent_node == null):
 		enemy_pool.call_deferred("add_pool_to_scene",get_tree().root)
-		
 
 func create_enemy():
 	print("crear enemigo")
 	var cotufino:Cotufino = enemy_pool.get_object_from_pool() as Cotufino
+	self.player_container.player_one_position.connect(cotufino.on_player_position_listener)
 	cotufino.position = self.global_position
 
 var t:float=1
