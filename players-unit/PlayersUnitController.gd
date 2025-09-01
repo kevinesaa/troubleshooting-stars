@@ -7,6 +7,7 @@ extends Node2D
 @onready var player_one_node: PlayerOneController = $playerOneNode
 @onready var player_two_node: PlayerTwoController = $PlayerTwoNode
 
+signal player_one_position(delta_position:Vector2)
 
 
 func _ready() -> void:
@@ -28,4 +29,5 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	
+	self.player_one_position.emit(self.player_one_node.global_position)
 	pass

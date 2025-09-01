@@ -5,9 +5,8 @@ const BULLET_EMMITER_LAYER_TYPE:BulletController.BulletEmitter = BulletControlle
 
 var poolContainer:PoolableObjectContainer
 
-
-
 @onready var ale_weapon = $AleWeapon
+var player_position: Vector2
 
 @export var x_speed = 0
 @export var y_speed = 1
@@ -20,6 +19,7 @@ var poolContainer:PoolableObjectContainer
   
 #shoot n go var
 @export var is_moving = false
+
 
 func get_bullet_emmiter_layer_type() -> BulletController.BulletEmitter:
 	return self.BULLET_EMMITER_LAYER_TYPE
@@ -48,13 +48,15 @@ func back_to_pool():
 	if(self.poolContainer != null):
 		self.poolContainer.back_to_pool()
 
+func on_player_position_listener(player_position:Vector2)->void:
+	self.player_position = player_position
+
 func _ready(): 
 	#shot_n_go()
 	ale_weapon.weapon_owner = self
-	pass
 
 func _process(delta):
-	move(x_speed,y_speed)
+	#move(x_speed,y_speed)
 	#sine_move(delta)
 	if is_moving:
 		#move(x_speed,y_speed)
@@ -62,4 +64,4 @@ func _process(delta):
 	if position.y > 400:
 		back_to_pool()
 	ale_weapon.shoot()
-	
+	#ale_weapon.aimed_shot(player_position)
