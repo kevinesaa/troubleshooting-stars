@@ -12,13 +12,13 @@ collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_ss2vt")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0mk3d")
+
 [node name="Cotufino" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_ysr82")
 
 [node name="AleWeapon" parent="." instance=ExtResource("2_0mk3d")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_0mk3d")
 
 [connection signal="area_entered" from="." to="." method="on_area_enter_listener"]

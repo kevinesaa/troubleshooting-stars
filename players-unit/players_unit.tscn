@@ -8,6 +8,7 @@
 script = ExtResource("1_oqpyu")
 
 [node name="playerOneNode" parent="." instance=ExtResource("2_4fl28")]
+base_speed = 111.0
 
 [node name="PlayerTwoNode" parent="." instance=ExtResource("3_2ch6o")]
 initial_angle_orbit_position = 270.0

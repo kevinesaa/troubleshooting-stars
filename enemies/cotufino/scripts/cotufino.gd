@@ -70,4 +70,5 @@ func _process(delta):
 	if position.y > 400:
 		back_to_pool()
 	ale_weapon.shoot()
+	#ale_weapon.spiral_shot()
 	#ale_weapon.aimed_shot(player_position)
